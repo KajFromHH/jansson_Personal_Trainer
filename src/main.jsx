@@ -14,7 +14,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 //import './index.css'
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/jansson_Personal_Trainer",
     element: <App />,
     children: [
       {

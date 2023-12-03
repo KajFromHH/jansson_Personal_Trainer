@@ -1,16 +1,14 @@
-import { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  //const [count, setCount] = useState(0)
 
   return (
     <div className="App">
       <nav>
-        <Link to={"/"}>Home  </Link>
-        <Link to={"/customer"}>Customer  </Link>
-        <Link to={"/training"}>Training  </Link>
+        <Link to={"/jansson_Personal_Trainer"}>Home  </Link>
+        <Link to={"/jansson_Personal_Trainer/customer"}>Customer  </Link>
+        <Link to={"/jansson_Personal_Trainer/training"}>Training  </Link>
       </nav>
       <Outlet />
     </div>
