@@ -7,6 +7,7 @@ import { Button, Snackbar } from "@mui/material";
 //Importing other classes or endpoints.
 
 import AddCustomer from "../crudOperations/AddCustomer";
+import EditCustomer from "../crudOperations/EditCustomer";
 
 //Importing visuals files.
 
@@ -50,6 +51,17 @@ function Customer() {
         { headerName: 'E-mail', field: 'email', sortable: true, filter: true },
         { headerName: 'Phone number', field: 'phone', sortable: true, filter: true },
 
+        //EDIT -painike.
+        {
+            cellRenderer: params => {
+                console.log(params.data)
+                return (
+                    <EditCustomer updateCustomer={updateCustomer} currentCustomer={params} />
+                );
+            }, width: 120
+        },
+
+        //DELETE -painike.
         {
             cellRenderer: params =>
 
@@ -95,7 +107,7 @@ function Customer() {
             })
             .then(response => {
                 if (response.ok) {
-                    getCustomers;
+                    getCustomers();
                     setMessages('New customer was added succesfully!');
                 } else {
                     alert('Something went wrong.')
@@ -104,6 +116,27 @@ function Customer() {
             .catch(err => console.error(err))
     }
 
+
+    //Update function for edited customer's data.
+    const updateCustomer = (REST_URL, currentCustomerEdited) => {
+        fetch(REST_URL,
+            {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(currentCustomerEdited)
+
+            })
+            .then(response => {
+                if (response.ok) {
+                    setMsq('Current customer data is edited successfully!');
+                    setOpen(true);
+                    getCustomers();
+                }
+                else
+                    alert('Something went wrong during editing. Responsetext: ' + response.statusText);
+            })
+            .catch(error => console.error(error))
+    }
 
     //Delete function for customer.
     //Note the /customers/{id} -endpoint and use DELETE -method.
