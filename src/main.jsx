@@ -6,6 +6,7 @@ import App from './App.jsx';
 import Home from './components/home.jsx';
 import Customer from './components/customer.jsx';
 import Training from './components/training.jsx';
+import TrainingCalendar from './components/trainingcalendar.jsx';
 
 
 //Importing Router components.
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "training",
         element: <Training />
+      },
+      {
+        path: "trainingcalendar",
+        element: <TrainingCalendar />
       }
 
     ]

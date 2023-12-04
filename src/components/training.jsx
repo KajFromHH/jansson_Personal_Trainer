@@ -73,20 +73,6 @@ function Training() {
             //(joissakin ulkoisessa lahteissa hyodennettiin jalkeimasta),
             //saadakseen tai fetch:attua json tiedostoa
 
-
-            /*
-            rendererCell: () => {
-                useEffect(() => {
-                    fetch(trainings[0].links[2].href)
-                        .then(response => response.json())
-                        .then(responseData => {
-                            setNames(responseData.content)
-                            console.log(names) //Ei tulee tuloksia?
-                        })
-                        .catch(error => console.error(error))
-                }, []);
-            },
-            */
             /*
             cellRenderer: params => {
                 //Haetaan ensin asiakkaan JSON tiedosto links kautta
@@ -104,30 +90,17 @@ function Training() {
                 },
                 */
 
+            //Valettavasti tama ongelmallinen koodi
+            //silla se tekee "lopputomasti" tai jatkuvasti
+            //get -pyyntoja kyseiselle linkille,
+            //joka kuormittaa konetta.
+
 
             width: '500px',
             sortable: true,
             filter: true
 
         },
-        {
-            headerName: 'Customers names',
-            rendererCell: () => {
-                useEffect(() => {
-                    fetch(trainings[0].links[2].href)
-                        .then(response => response.json())
-                        .then(responseData => {
-                            setNames(responseData.content)
-                            console.log(names) //Ei tulee tuloksia?
-                        })
-                        .catch(error => console.error(error))
-                }, []);
-            },
-            field: names,
-            width: '200px'
-
-        },
-
         //DELETE -painike.
         {
             cellRenderer: params =>
@@ -165,36 +138,36 @@ function Training() {
             .then(responseData => {
                 setTrainings(responseData.content)
                 console.log(trainings)
-
-                //Sitten tassa kohdassa yritin fetchata
-                //ensimmaisen harjoituksen tehnyt asiakkaan nimen.
-
-                //console.log(fetch(trainings[0].links[2].href)
-                //.then(response => response.json())
-                //.then(data => console.log(data.firstname + ' ' + data.lastname)))
-
-                //Netissa ei jostain syysta ollut mitaan teoriaa eikä malliesimerkkeja,
-                //miten haetaan json linkin kautta toista json tiedostoja 
-                //(tassa tapauksessa, trainings.json -> links[2].href,
-                //jossa on linkki harjoituksen tehnyt asiakkaan json tietoja).
-                //Jouduin aikamoiseen trial & error (lahes brute force)
-                // saada kyseista asiakaan nimea (kesti neljasosaa paivastani).
-
-                //Ongelmana tassa tapauksessa, etta tulee eka renderointi sellainen
-                //virhe ettei koodi loyda trainings[0].links[2].href.
-                //Vasta kun tekee uusia muutoksia, niin sitten koodi ymmartaa
-                //kyseisen arrayn arvoa, silla nyt trainings on tallennettu muistiin
-
-                //Siksi haluaisin hyodontaa kolumnissa cellRenderer, joka suoritaa 
-                //asiakkaan nimen tiedonhankintaa trainings[0].links[2].href
-                //vasta kun ensimmainen useEffect on suoritettu.
-
-                //Ongelmana on se, etten ihan viela pysty hallitsemaan cellRenderer.
-                //Tarkemmin sanottuna, miten palautan cellRenderer tehty
-                //fetch:attu JSON-tieto nyt kyseiseen field -lohkoon?
-
             }).catch(error => console.error(error))
     }
+
+    //Yritin getTrainings -lohossa fetchata
+    //ensimmaisen harjoituksen tehnyt asiakkaan nimen.
+
+    //console.log(fetch(trainings[0].links[2].href)
+    //.then(response => response.json())
+    //.then(data => console.log(data.firstname + ' ' + data.lastname)))
+
+    //Netissa ei jostain syysta ollut mitaan teoriaa eikä malliesimerkkeja,
+    //miten haetaan json linkin kautta toista json tiedostoja 
+    //(tassa tapauksessa, trainings.json -> links[2].href,
+    //jossa on linkki harjoituksen tehnyt asiakkaan json tietoja).
+    //Jouduin aikamoiseen trial & error (lahes brute force)
+    // saada kyseista asiakaan nimea (kesti neljasosaa paivastani).
+
+    //Ongelmana tassa tapauksessa, etta tulee eka renderointi sellainen
+    //virhe ettei koodi loyda trainings[0].links[2].href.
+    //Vasta kun tekee uusia muutoksia, niin sitten koodi ymmartaa
+    //kyseisen arrayn arvoa, silla nyt trainings on tallennettu muistiin
+
+    //Siksi haluaisin hyodontaa kolumnissa cellRenderer, joka suoritaa 
+    //asiakkaan nimen tiedonhankintaa trainings[0].links[2].href
+    //vasta kun ensimmainen useEffect on suoritettu.
+
+    //Ongelmana on se, etten ihan viela pysty hallitsemaan cellRenderer.
+    //Tarkemmin sanottuna, miten palautan cellRenderer tehty
+    //fetch:attu JSON-tieto nyt kyseiseen field -lohkoon?
+
 
 
     //Add function for training.
