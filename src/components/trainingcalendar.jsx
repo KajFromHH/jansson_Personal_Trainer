@@ -58,16 +58,21 @@ function TrainingCalendar() {
 
     //Source: https://www.appsloveworld.com/reactjs/200/236/trying-to-access-mapped-api-data-and-show-it-in-react-big-calendar-reactjs
 
+    //Also credits to Juha Hinkula's video "React_basics_FetchList_Persons"
+    //for reminding us to use fetch & useState & map -triple operation.  
+    // from timestamp 6:40 ->
 
-    const events = trainings.map((reservation) => {
+
+    const events = trainings.map((training) => {
         return {
             //id: trainings.id,
-            title: trainings.activity,
-            start: new Date(trainings.date),
-            end: new Date(trainings.date),
+            title: training.activity,
+            start: new Date(training.date),
+            end: new Date(training.date),
             allday: false
         }
     });
+
 
     return (
         <>

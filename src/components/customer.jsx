@@ -1,6 +1,6 @@
 //Importing tools from libraries.
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { Button, Snackbar } from "@mui/material";
 
@@ -169,6 +169,13 @@ function Customer() {
         };
     }
 
+    //Export -function that saves all customers
+    //data in a CSV -file.
+    const gridRef = useRef();
+
+    const exportCustomer = useCallback(() => {
+        gridRef.current.api.exportDataAsCsv();
+    }, []);
 
     return (
         <>
@@ -179,12 +186,20 @@ function Customer() {
                 <h1>Customer List</h1>
 
                 <AddCustomer addCustomer={addCustomer} />
+                <Button
+                    onClick={exportCustomer}
+                >
+                    Export customer as CSV
+                </Button>
 
                 <AgGridReact
                     rowData={customers}
                     columnDefs={columns}
                     pagination={true}
-                    paginationPageSize={10}>
+                    paginationPageSize={10}
+                    ref={gridRef}
+                    suppressExcelExport={true}
+                >
                 </AgGridReact>
 
                 <Snackbar
