@@ -174,7 +174,7 @@ function Customer() {
     const gridRef = useRef();
 
     const exportCustomer = useCallback(() => {
-        gridRef.current.api.exportDataAsCsv();
+        gridRef.current.api.exportDataAsCsv({ skipColumnHeaders: true });
     }, []);
 
     return (
