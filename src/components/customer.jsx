@@ -78,7 +78,7 @@ function Customer() {
     //Brought from Moodle site --> Front End --> Lopputyo
     //--> REST dokumentaatio.
 
-    const REST_URL = 'http://traineeapp.azurewebsites.net/api/customers';
+    const REST_URL = 'https://traineeapp.azurewebsites.net/api/customers';
 
     //Need useEffect in order fetching customers JSON
     //from REST api. Executed only once after the first render.

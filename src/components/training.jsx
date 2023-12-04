@@ -122,7 +122,7 @@ function Training() {
     //Also, for fetching customer name in column,
     //we need 
 
-    const REST_URL = 'http://traineeapp.azurewebsites.net/api/trainings';
+    const REST_URL = 'https://traineeapp.azurewebsites.net/api/trainings';
 
 
     //Need useEffect in order fetching training JSON -data

@@ -11,7 +11,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 function TrainingCalendar() {
     //URL for trainings.
-    const REST_URL = 'http://traineeapp.azurewebsites.net/api/trainings';
+    const REST_URL = 'https://traineeapp.azurewebsites.net/api/trainings';
 
     //State for saving trainings data from REST API.
     const [trainings, setTrainings] = useState([]);
