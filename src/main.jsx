@@ -12,9 +12,9 @@ import TrainingCalendar from './components/trainingcalendar.jsx';
 //Importing Router components.
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-//import './index.css'
 const router = createBrowserRouter([
   {
+    //The path must be same name as Github repository.
     path: "/jansson_Personal_Trainer",
     element: <App />,
     children: [

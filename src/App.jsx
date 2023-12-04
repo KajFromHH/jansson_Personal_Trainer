@@ -2,7 +2,8 @@ import { Link, Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
-
+  //Note the link are configured to Github repository's name,
+  //accordingly.
   return (
     <div className="App">
       <nav>
